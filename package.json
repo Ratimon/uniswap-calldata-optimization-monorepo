@@ -1,0 +1,21 @@
+{
+  "name": "uniswap-calldata-optimization-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "---------------------- UTILITIES ----------------------": "",
+    "web:dev": "pnpm --filter ./web dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ratimon/uniswap-calldata-optimization-monorepo.git"
+  },
+  "author": "Rati Montreewat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ratimon/uniswap-calldata-optimization-monorepo/issues"
+  },
+  "homepage": "https://github.com/Ratimon/uniswap-calldata-optimization-monorepo#readme"
+}
