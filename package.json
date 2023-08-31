@@ -2,10 +2,12 @@
   "name": "uniswap-calldata-optimization-monorepo",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "---------------------- UTILITIES ----------------------": "",
+    "env": "ldenv env",
     "web:dev": "pnpm --filter ./web dev"
   },
   "repository": {
@@ -17,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Ratimon/uniswap-calldata-optimization-monorepo/issues"
   },
-  "homepage": "https://github.com/Ratimon/uniswap-calldata-optimization-monorepo#readme"
+  "homepage": "https://github.com/Ratimon/uniswap-calldata-optimization-monorepo#readme",
+  "dependencies": {
+    "ldenv": "^0.3.7"
+  }
 }

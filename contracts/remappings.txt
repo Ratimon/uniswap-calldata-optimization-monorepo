@@ -1,0 +1,8 @@
+@main/=src/
+@script/=script/
+@test/=test/
+@generated/=generated/
+@forge-std/=lib/forge-std/src/
+@openzeppelin/=lib/openzeppelin-contracts/
+@solid-grinder/=node_modules/solid-grinder/contracts/
+forge-deploy/=node_modules/forge-deploy/contracts/
