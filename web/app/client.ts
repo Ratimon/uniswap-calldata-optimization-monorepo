@@ -1,5 +1,5 @@
-import { createWalletClient, createPublicClient, custom, http } from "viem";
-import { polygonMumbai } from "viem/chains";
+import { createWalletClient, createPublicClient, createTestClient, custom, http } from "viem";
+import { hardhat, foundry, polygonMumbai, sepolia } from "viem/chains";
 import "viem/window";
 
 export function ConnectWalletClient() {
@@ -12,11 +12,16 @@ export function ConnectWalletClient() {
         throw new Error(errorMessage);
     }
     
-    // Delcalre a Wallet Client
     const walletClient = createWalletClient({
-        chain: polygonMumbai,
+        chain: sepolia,
         transport: transport,
     });
+
+    // const client = createTestClient({
+    //     chain: foundry,
+    //     mode: 'anvil',
+    //     transport: http(), 
+    //   })
     
     return walletClient;
 }
@@ -31,11 +36,16 @@ export function ConnectPublicClient() {
         throw new Error(errorMessage);
     }
     
-    // Delcare a Public Client
     const publicClient = createPublicClient({
-        chain: polygonMumbai,
+        chain: sepolia,
         transport: transport,
     });
+
+    // const client = createTestClient({
+    //     chain: foundry,
+    //     mode: 'anvil',
+    //     transport: http(), 
+    //   })
     
     return publicClient;
 }

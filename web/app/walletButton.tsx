@@ -14,7 +14,6 @@ export default function WalletButton() {
             const [address] = await walletClient.getAddresses();
             
             const balance = await publicClient.getBalance({ address });
-            // Update values for address & balance state variable
             setAddress(address);
             setBalance(balance);
         } catch (error) {
