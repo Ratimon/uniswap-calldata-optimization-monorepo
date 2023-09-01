@@ -32,9 +32,12 @@
     "watch_test": "as-soon -w script -w src -w test pnpm test",
     "watch_out_deploy": "pnpm compile; as-soon -w out pnpm run deploy",
     "watch_out_test": "pnpm compile; as-soon -w out pnpm run deploy",
-    "deploy": "ldenv -m localhost forge script script/000_DeployAddressTable.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
-    "deploy_trezor": "ldenv -m localhost forge script script/000_DeployAddressTable.s.sol -t --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
     "script": "ldenv forge script --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast @@",
-    "local_node": "rm -Rf deployments/localhost && anvil"
+    "local_node": "rm -Rf deployments/localhost && anvil",
+    "---------------------- DEPLOYMENT ----------------------": "",
+    "deploy_1": "ldenv -m localhost forge script script/000_DeployAddressTable.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "deploy_2": "ldenv -m localhost forge script script/001_DeployUniswapV2Router02_Optimized.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "deploy_all": "ldenv -m localhost pnpm deploy_1 ~~ pnpm deploy_2 ~~",
+    "deploy_trezor": "ldenv -m localhost forge script script/000_DeployAddressTable.s.sol -t --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@"
   }
 }
