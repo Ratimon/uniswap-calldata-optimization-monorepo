@@ -23,6 +23,7 @@
     "gen-deployer": "forge-deploy gen-deployer --templates node_modules/forge-deploy-proxy/templates",
     "compile": "pnpm gen-deployer && forge build",
     "export": "forge-deploy export localhost contracts.json",
+    "export-ts": "forge-deploy export localhost contracts.ts",
     "deployments:sync": "forge-deploy sync",
     "forge-deploy": "forge-deploy",
     "solid-grinder": "solid-grinder",

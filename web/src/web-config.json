@@ -1,0 +1,7 @@
+{
+	"name": "Uniswap",
+	"title": "Uniswap - The calldata optimization demo",
+	"description": "solid grinder 's demo for calldata optimization",
+	"themeColor": "#000000",
+	"appleStatusBarStyle": "black-translucent"
+}
