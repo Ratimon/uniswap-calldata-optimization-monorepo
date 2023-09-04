@@ -1,9 +1,7 @@
 <script>
     import "../app.css";
     import NavTabs from '$lib/components/daisyui/NavTabs.svelte';
-
     import {name, description, themeColor, appleStatusBarStyle} from 'web-config';
-
     import {url} from '$lib/utils/path';
 
 </script>
@@ -16,7 +14,6 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={name} />
 	<meta property="og:description" content={description} />
-	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:title" content={name} />
 	<meta property="twitter:description" content={description} />
 
@@ -25,7 +22,6 @@
 	<link rel="icon" href={url('/pwa/favicon.svg')} type="image/svg+xml" />
 	<link rel="icon" href={url('/pwa/favicon.ico')} sizes="any" /><!-- 32×32 -->
 	<link rel="apple-touch-icon" href={url('/pwa/apple-touch-icon.png')} /><!-- 180×180 -->
-	<link rel="manifest" href={url('/pwa/manifest.webmanifest')} />
 
 	<!-- extra info -->
 	<meta name="theme-color" content={themeColor} />
