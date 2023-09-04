@@ -1,5 +1,5 @@
 <script>
-    import "../app.css";
+	import '../app.postcss';
     import NavTabs from '$lib/components/daisyui/NavTabs.svelte';
     import {name, description, themeColor, appleStatusBarStyle} from 'web-config';
     import {url} from '$lib/utils/path';
