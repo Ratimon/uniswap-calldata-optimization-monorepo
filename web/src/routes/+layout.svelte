@@ -3,6 +3,7 @@
     import NavTabs from '$lib/components/daisyui/NavTabs.svelte';
     import {name, description, themeColor, appleStatusBarStyle} from 'web-config';
     import {url} from '$lib/utils/path';
+	import ConnectButton from '$lib/web3/ConnectButton.svelte';
 
 </script>
 
@@ -34,8 +35,8 @@
 	<meta name="apple-mobile-web-app-title" content={name} />
 </svelte:head>
 
-<div class="relative top-0 z-50 navbar bg-base-100 h-16 p-1 border-b-2 border-primary">
-	<div class="flex-1">
+<div class="relative top-0 z-50 navbar bg-base-100 h-16 p-1 border-b-2 border-primary ">
+	<div class="flex-1 place-content-center" >
 		<NavTabs
 			pages={[
 				{pathname: '/', title: 'Home'},
@@ -43,6 +44,9 @@
 				{pathname: '/about/', title: 'About'},
 			]}
 		/>
+	</div>
+	<div class="flex-none">
+		<ConnectButton />
 	</div>
 </div>
   
