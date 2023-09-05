@@ -40,7 +40,7 @@
 		<NavTabs
 			pages={[
 				{pathname: '/', title: 'Home'},
-				{pathname: '/demo/', title: 'Demo'},
+				{pathname: '/add-liquidity/', title: 'Add Liquidity'},
 				{pathname: '/about/', title: 'About'},
 			]}
 		/>
