@@ -28,12 +28,12 @@
 		"vite": "^4.4.2"
 	},
 	"dependencies": {
-		"named-logs": "^0.2.2",
 		"ethereum-tx-observer": "^0.0.3",
+		"named-logs": "^0.2.2",
 		"radiate": "^0.0.1",
+		"svelte-icons": "^2.1.0",
 		"viem": "^1.7.0",
 		"web3-connection": "^0.1.4",
 		"web3-connection-viem": "^0.0.1"
-
-	}	
+	}
 }
