@@ -16,20 +16,25 @@
   Demo for call data optimization
 </h1>
 
-<section class="px-10 my-10 text-center font-black  border-2 border-pink-300">
+<section class="px-10 my-10 text-center font-black border-2 border-pink-300">
 
   <h2 class="text-1xl font-bold">
     Add liquidity
   </h2>
 
-  <div class="flex flex-col max-w-2xl mx-auto py-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+  <div class="px-4 py-10 sm:px-6 lg:px-8 flex flex-col space-y-5 max-w-2xl lg:max-w-7xl">
 
     <TokenField bind:isDropdownOpen={isDropdownOpen1} bind:menuItems={menuItems1}  />
-    <TokenField bind:isDropdownOpen={isDropdownOpen1} bind:menuItems={menuItems2}  />
+    <TokenField bind:isDropdownOpen={isDropdownOpen2} bind:menuItems={menuItems2}  />
 
-  <div class="basis-1/2 border-2 border-pink-300">
-      Test 2
+    <div class="bg-slate-400">
+      <button class="bg-slate-400 hover:bg-slate-600 rounded-md border-2 border-pink-300">
+        Supply
+      </button>
+    </div>
+    
   </div>
+
 </section>
   
 <style lang="postcss">

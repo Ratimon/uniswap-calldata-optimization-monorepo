@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="flex flex-row justify-between h-12 px-4 bg-slate-400">
+    <div class="px-4 flex flex-row justify-between h-12 bg-slate-400">
       <form method="POST">
         <label>
           <input
@@ -47,14 +47,14 @@
           Select Token
         </div>
         <div class="dropdown" on:focusout={handleDropdownFocusLoss}>
-          <button class="btn top-2 bg-slate-400 px-1 py-1 rounded-md border-0 border-pink-300" on:click={handleDropdownClick} >
+          <button class="btn top-2 px-1 py-1 bg-slate-400 rounded-md border-0 border-pink-300" on:click={handleDropdownClick} >
             {#if isDropdownOpen}
               <MdKeyboardArrowDown />
             {:else}
               <MdFormatListBulleted/>
             {/if}
           </button>
-          <ul class="dropdown-content menu bg-slate-400 w-44" style:visibility={isDropdownOpen ? 'visible' : 'hidden'}>
+          <ul class="dropdown-content menu w-44 bg-slate-400" style:visibility={isDropdownOpen ? 'visible' : 'hidden'}>
             {#each menuItems as item}
               <li><button class="btn text-slate-300 bg-slate-400">{item}</button></li>
             {/each}
