@@ -80,5 +80,6 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         // SafeERC20.safeTransferFrom(IERC20(tokenA), msg.sender, pair, amountA);
         // SafeERC20.safeTransferFrom(IERC20(tokenB), msg.sender, pair, amountB);
         // liquidity = IUniswapV2Pair(pair).mint(to);
+        return (amountA, amountB, liquidity);
     }
 }

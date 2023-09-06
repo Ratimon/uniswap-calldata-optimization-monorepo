@@ -1,14 +1,32 @@
 <script>
 
+import {connection, account, pendingActions, network, contracts} from '$lib/web3';
+
   import MdFormatListBulleted from 'svelte-icons/md/MdFormatListBulleted.svelte'
   import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte'
   import TokenField from './TokenField.svelte';
 
-  let isDropdownOpen1 = false
-  let isDropdownOpen2 = false
+  let isDropdownOpen1 = false;
+  let isDropdownOpen2 = false;
 
-  let menuItems1 = ["TokenA", "TokenB", "TokenC"]
-  let menuItems2 = ["Token1", "Token2"]
+  let menuItems1 = ["TokenA", "TokenB", "TokenC"];
+  let menuItems2 = ["Token1", "Token2"];
+
+  function addLiquidityCompressed() {;
+
+		contracts.execute(async ({contracts, account}) => {
+      
+      console.log('contracts.UniswapV2Router02_Optimized', contracts.UniswapV2Router02_Optimized.write);
+
+			await contracts.UniswapV2Router02_Optimized.write.addLiquidityCompressed(
+        // hardcoded for demo
+        
+        ["0x000001000002000000410d586a20a4c00000000000878678326eac9000000000003635c9adc5dea000000000006c6b935b8bbd4000000000030000000064"],
+        {account: account.address}
+
+      );
+		});
+	}
 
 </script>
 
@@ -28,9 +46,10 @@
     <TokenField bind:isDropdownOpen={isDropdownOpen2} bind:menuItems={menuItems2}  />
 
     <div class="bg-slate-400">
-      <button class="bg-slate-400 hover:bg-slate-600 rounded-md border-2 border-pink-300">
-        Supply
+      <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => addLiquidityCompressed()}
+        >Supply
       </button>
+
     </div>
     
   </div>
