@@ -1,6 +1,8 @@
 <script>
 
-import {connection, account, pendingActions, network, contracts} from '$lib/web3';
+  import {zeroAddress, parseEther} from 'viem';
+
+  import {connection, account, pendingActions, network, contracts} from '$lib/web3';
 
   import MdFormatListBulleted from 'svelte-icons/md/MdFormatListBulleted.svelte'
   import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte'
@@ -12,15 +14,39 @@ import {connection, account, pendingActions, network, contracts} from '$lib/web3
   let menuItems1 = ["TokenA", "TokenB", "TokenC"];
   let menuItems2 = ["Token1", "Token2"];
 
-  function addLiquidityCompressed() {;
+  async function encode_addLiquidityData() {
+
+    contracts.execute(async ({contracts, account}) => {
+    
+      const payload = await contracts.UniswapV2Router02_Encoder.read.encode_addLiquidityData(
+      [
+        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
+        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
+        parseEther('1200'),
+        parseEther('2500'),
+        parseEther('1000'),
+        parseEther('2000'),
+        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
+        100
+      ]
+      );
+
+      console.log('payload', payload);
+
+		  });
+
+  }
+
+  async function addLiquidityCompressed() {
 
 		contracts.execute(async ({contracts, account}) => {
       
-      console.log('contracts.UniswapV2Router02_Optimized', contracts.UniswapV2Router02_Optimized.write);
+      // console.log('contracts.UniswapV2Router02_Optimized', contracts.UniswapV2Router02_Optimized.write);
+      // console.log('contracts.UniswapV2Router02_Encoder', contracts.UniswapV2Router02_Encoder);
+      // console.log('contracts.UniswapV2Router02_Encoder', contracts.UniswapV2Router02_Optimized);
 
 			await contracts.UniswapV2Router02_Optimized.write.addLiquidityCompressed(
         // hardcoded for demo
-        
         ["0x000001000002000000410d586a20a4c00000000000878678326eac9000000000003635c9adc5dea000000000006c6b935b8bbd4000000000030000000064"],
         {account: account.address}
 
@@ -46,7 +72,7 @@ import {connection, account, pendingActions, network, contracts} from '$lib/web3
     <TokenField bind:isDropdownOpen={isDropdownOpen2} bind:menuItems={menuItems2}  />
 
     <div class="bg-slate-400">
-      <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => addLiquidityCompressed()}
+      <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => encode_addLiquidityData()}
         >Supply
       </button>
 

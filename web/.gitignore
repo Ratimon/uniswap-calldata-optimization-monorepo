@@ -25,3 +25,4 @@ static/pwa
 
 # generated from contracts
 src/data/contracts.ts
+src/data/contracts.json
