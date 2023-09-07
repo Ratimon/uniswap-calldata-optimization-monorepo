@@ -38,7 +38,8 @@
     "---------------------- DEPLOYMENT ----------------------": "",
     "deploy_1": "ldenv -m localhost forge script script/000_DeployAddressTable.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
     "deploy_2": "ldenv -m localhost forge script script/001_DeployUniswapV2Router02_Optimized.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
-    "deploy_all": "ldenv -m localhost pnpm deploy_1 ~~ pnpm deploy_2 ~~",
+    "deploy_3": "ldenv -m localhost forge script script/002_DeployUniswapV2Router02_Encoder.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "deploy_all": "ldenv -m localhost pnpm deploy_1 ~~ pnpm deploy_2 ~~ pnpm deploy_3 ~~",
     "deploy_trezor": "ldenv -m localhost forge script script/000_DeployAddressTable.s.sol -t --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@"
   }
 }
