@@ -4,8 +4,8 @@
   import MdFormatListBulleted from 'svelte-icons/md/MdFormatListBulleted.svelte'
   import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte'
 
-  export let isDropdownOpen: boolean;
-  export let menuItems: string[];
+ 
+  export let tokenLists: string[];
 
 //   export type SupplyField = {
 //     tokenA: string;
@@ -44,6 +44,8 @@
 	// 	token, amountDesired, amountMin
 	// };
 
+  let isDropdownOpen: boolean = false;
+
   const handleDropdownClick = () => {
     isDropdownOpen = !isDropdownOpen 
   }
@@ -55,7 +57,6 @@
 
   
 </script>
-
 
 
 <div class="flex flex-col">
@@ -97,11 +98,14 @@
             {/if}
           </button>
           <ul class="dropdown-content menu w-44 bg-slate-400" style:visibility={isDropdownOpen ? 'visible' : 'hidden'}>
-            {#each menuItems as item}
-              <li><button class="btn text-slate-300 bg-slate-400">{item}</button></li>
+            {#each tokenLists as item}
+              <li><div class="text-slate-300 bg-slate-400">{item}</div></li>
             {/each}
           </ul>
         </div>
+
+
+        
       </div>
     </div>
 

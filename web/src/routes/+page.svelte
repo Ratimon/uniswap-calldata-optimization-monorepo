@@ -6,11 +6,8 @@
 
   import TokenField from './TokenField.svelte';
 
-  let isDropdownOpen1 = false;
-  let isDropdownOpen2 = false;
-
-  let menuItems1 = ["TokenA", "TokenB", "TokenC"];
-  let menuItems2 = ["Token1", "Token2"];
+  let tokenLists1 = ["TokenA", "TokenB", "TokenC"];
+  let tokenLists2 = ["Token1", "Token2"];
 
   // let data1 = { token: zeroAddress, amountDesired: zeroAddress,  amountMin: parseEther('0')};
   // let data2 = { token: zeroAddress, amountDesired: zeroAddress,  amountMin: parseEther('0')};
@@ -19,7 +16,14 @@
 
   // let submittedData = null;
 
-  let amountDesired: any = 0;
+  let amountDesiredA: Number = 1200.5;
+  let amountDesiredB: Number = 2500;
+
+  $: result =  {
+      amountDesiredA: parseEther(amountDesiredA.toString()),
+      amountDesiredB: parseEther(amountDesiredB.toString())
+	}
+
 
   let to = zeroAddress;
   let deadline = parseUnits('50',0);
@@ -91,8 +95,8 @@
 
   <div class="px-4 py-10 sm:px-6 lg:px-8 flex flex-col space-y-5 max-w-2xl lg:max-w-7xl">
 
-    <TokenField bind:amountDesired={amountDesired} isDropdownOpen={isDropdownOpen1} menuItems={menuItems1}  />
-    <TokenField bind:amountDesired={amountDesired} isDropdownOpen={isDropdownOpen2} menuItems={menuItems2}  />
+    <TokenField bind:amountDesired={amountDesiredA} tokenLists={tokenLists1}  />
+    <TokenField bind:amountDesired={amountDesiredB} tokenLists={tokenLists2}  />
 
     <div class="bg-slate-400">
       <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => addLiquidityCompressed()}
@@ -103,7 +107,8 @@
   </div>
 
   <div>
-    {amountDesired.toString()}
+    {result.amountDesiredA}
+    {result.amountDesiredB}
   </div>
 
 </section>
