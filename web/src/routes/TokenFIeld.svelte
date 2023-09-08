@@ -1,18 +1,59 @@
-<script>
+<script lang="ts">
+  import {zeroAddress, parseEther, parseUnits} from 'viem';
+
   import MdFormatListBulleted from 'svelte-icons/md/MdFormatListBulleted.svelte'
   import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte'
 
-  export let isDropdownOpen
-  export let menuItems
+  export let isDropdownOpen: boolean;
+  export let menuItems: string[];
 
-  export const handleDropdownClick = () => {
+//   export type SupplyField = {
+//     tokenA: string;
+// 	   tokenB: string;
+// 	   amountADesired: BigInt;
+// 	   amountBDesired: BigInt;
+//     amountAMin: BigInt;
+//     to: string;
+//     deadline: Number;
+// };
+
+
+  // export let data: any;
+  export let amountDesired: any;
+
+	// export let onSubmit = () => {};
+
+
+  // let token = data.tokenA ?? zeroAddress;
+	// let amountDesired = data.amountADesired ?? parseEther('0');
+	// let amountMin = data.amountAMin ?? parseEther('0');
+  
+  // let token = zeroAddress;
+	// let amountDesired = parseEther('0');
+	// let amountMin =  parseEther('0');
+
+  // let amountDesired: any;
+
+  // $: token = data.tokenA
+  // $: data.amountDesired = amountDesired
+	// $: amountDesired = data.amountADesired
+	// $: amountMin = data.amountAMin
+
+
+  // $: data = {
+	// 	token, amountDesired, amountMin
+	// };
+
+  const handleDropdownClick = () => {
     isDropdownOpen = !isDropdownOpen 
   }
 
-  export const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {
+  const handleDropdownFocusLoss = ({ relatedTarget, currentTarget } : any) => {
     if (relatedTarget instanceof HTMLElement && currentTarget.contains(relatedTarget)) return 
     isDropdownOpen = false
   }
+
+  
 </script>
 
 
@@ -28,10 +69,11 @@
     </div>
 
     <div class="px-4 flex flex-row justify-between h-12 bg-slate-400">
-      <form method="POST">
+      <form>
         <label>
           <input
-            name="description"
+            name="Amount to be added"
+            bind:value={amountDesired}
             autocomplete="off"
             class="text-slate-700"
           />
