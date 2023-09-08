@@ -17,13 +17,6 @@
 			token2: '2',
 		};
 
-  // let data1 = { token: zeroAddress, amountDesired: zeroAddress,  amountMin: parseEther('0')};
-  // let data2 = { token: zeroAddress, amountDesired: zeroAddress,  amountMin: parseEther('0')};
-
-  // $: tokenA = data1.token;
-
-  // let submittedData = null;
-
   let tokenA: string;
   let tokenB: string;
   let amountDesiredA: Number = 1200.5;
