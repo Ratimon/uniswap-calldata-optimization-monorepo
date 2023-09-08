@@ -1,37 +1,31 @@
 <script lang="ts">
-
-  import {parseEther, parseUnits, zeroAddress} from 'viem';
-
+  import {hexToNumber, hexToBigInt, parseEther, parseUnits, zeroAddress} from 'viem';
   import {connection, account, pendingActions, network, contracts} from '$lib/web3';
-
   import TokenField from './TokenField.svelte';
 
-  let tokenLists1 = {
+  let tokenLists1: { [key: string]: `0x${string}`; } = {
 			tokenA: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
-			tokenB: '1',
-			tokenC: '2',
+			tokenB: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEAD0000',
+			tokenC: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEAD1111',
 		};
 
-  let tokenLists2 = {
+  let tokenLists2: { [key: string]: `0x${string}`; } = {
 			token1: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
-			token2: '2',
+			token2: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEAD2222',
 		};
 
-  let tokenA: string;
-  let tokenB: string;
+  let tokenA: `0x${string}`;
+  let tokenB: `0x${string}`;
   let amountDesiredA: Number = 1200.5;
   let amountDesiredB: Number = 2500;
 
-  $: result =  {
+  $: modelResult =  {
       tokenA: tokenA,
       tokenB: tokenB,
       amountDesiredA: parseEther(amountDesiredA.toString()),
-      amountDesiredB: parseEther(amountDesiredB.toString())
+      amountDesiredB: parseEther(amountDesiredB.toString()),
+      deadline: hexToBigInt('0x32') // current timestamp + 50
 	}
-
-
-  let to = zeroAddress;
-  let deadline = parseUnits('50',0);
 
   async function encode_addLiquidityData() {
 
@@ -52,6 +46,22 @@
 
       console.log('payload', payload);
 
+      console.log('blocknumber: hex', await $connection.provider.request({
+        method: 'eth_blockNumber'
+      }));
+
+      console.log('blocknumber2: Number', hexToNumber(await $connection.provider.request({
+        method: 'eth_blockNumber'
+      })));
+
+      let BlockByNumber =  await $connection.provider.request({
+        method: 'eth_getBlockByNumber',
+        params: ['latest', true],
+      })
+
+      console.log('Block Timestamp 1', hexToNumber(BlockByNumber.timestamp)+hexToNumber('0x32'));
+      console.log('Block Timestamp 2', hexToNumber(BlockByNumber.timestamp)+50);
+
 		  });
 
   }
@@ -60,16 +70,23 @@
 
 		contracts.execute(async ({contracts, account}) => {
 
+      let blockByNumber =  await $connection.provider.request({
+        method: 'eth_getBlockByNumber',
+        params: ['latest', true],
+      })
+
+      // console.log('Block Timestamp', hexToNumber(blockByNumber.timestamp));
+
       let payload = await contracts.UniswapV2Router02_Encoder.read.encode_addLiquidityData(
       [
-        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
-        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
-        parseEther('1200'),
-        parseEther('2500'),
+        modelResult.tokenA,
+        modelResult.tokenB,
+        modelResult.amountDesiredA,
+        modelResult.amountDesiredB,
         parseEther('1000'),
         parseEther('2000'),
-        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
-        parseUnits( '100' , 0)
+        account.address,
+        hexToBigInt(blockByNumber.timestamp) + modelResult.deadline
       ]
       );
 
@@ -104,7 +121,7 @@
     <TokenField bind:amountDesired={amountDesiredB} bind:token={tokenB} tokenLists={tokenLists2}  />
 
     <div class="bg-slate-400">
-      <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => addLiquidityCompressed()}
+      <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => encode_addLiquidityData()}
         >Supply
       </button>
     </div>
@@ -112,10 +129,11 @@
   </div>
 
   <div>
-    {result.tokenA}
-    {result.tokenB}
-    {result.amountDesiredA}
-    {result.amountDesiredB}
+    {modelResult.tokenA}
+    {modelResult.tokenB}
+    {modelResult.amountDesiredA}
+    {modelResult.amountDesiredB}
+    {modelResult.deadline}
   </div>
 
 </section>

@@ -1,8 +1,8 @@
 <script lang="ts">
  
-  export let tokenLists: { [key: string]: string; };
+  export let tokenLists: { [key: string]: `0x${string}`; };
   export let amountDesired: Number;
-  export let token: string = "select";
+  export let token: string = "Select Token";
 
 </script>
 
