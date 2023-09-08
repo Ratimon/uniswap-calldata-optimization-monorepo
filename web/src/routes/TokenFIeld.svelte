@@ -5,7 +5,7 @@
   import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte'
 
  
-  export let tokenLists: string[];
+  export let tokenLists: { [key: string]: string; };
 
 //   export type SupplyField = {
 //     tokenA: string;
@@ -19,7 +19,10 @@
 
 
   // export let data: any;
+  // export let token: any;
   export let amountDesired: any;
+
+  export let token: any = "select";
 
 	// export let onSubmit = () => {};
 
@@ -86,7 +89,7 @@
       </button>
 
       <div class="flex justify-between items-center rounded-md border-2 border-pink-300">
-        <div class="rounded-md">
+        <!-- <div class="rounded-md">
           Select Token
         </div>
         <div class="dropdown" on:focusout={handleDropdownFocusLoss}>
@@ -102,8 +105,15 @@
               <li><div class="text-slate-300 bg-slate-400">{item}</div></li>
             {/each}
           </ul>
-        </div>
+        </div> -->
 
+        <select bind:value={token} class="rounded-md text-slate-700">
+          {#each Object.entries(tokenLists) as [key, value] (key)}
+            <option value={value} >
+              {key}
+            </option>
+          {/each}
+        </select>
 
         
       </div>
