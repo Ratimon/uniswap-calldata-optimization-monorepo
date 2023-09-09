@@ -34,7 +34,9 @@
       </button>
 
       <div class="flex justify-between items-center rounded-md border-2 border-pink-300">
-
+        <div class="rounded-md">
+          Select Token
+        </div>
         <select bind:value={token} class="rounded-md text-slate-700">
           {#each Object.entries(tokenLists) as [key, value] (key)}
             <option value={value} >

@@ -8,22 +8,30 @@
 			tokenB: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEAD0000',
 			tokenC: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEAD1111',
 		};
-
   let tokenLists2: { [key: string]: `0x${string}`; } = {
 			token1: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
 			token2: '0xDEADDEADDEADDEADDEADDEADDEADDEADDEAD2222',
 		};
+  
+  let thresholds: { [key: string]: Number; } = {
+    "95 %": 0.95,
+    "90 %": 0.90,
+    "80 %": 0.80,
+  }
 
   let tokenA: `0x${string}`;
   let tokenB: `0x${string}`;
-  let amountDesiredA: Number = 1200.5;
-  let amountDesiredB: Number = 2500;
+  let amountDesiredA: number = 1200.5;
+  let amountDesiredB: number = 2500;
+  let threshold: number  = 0.95;
 
   $: modelResult =  {
       tokenA: tokenA,
       tokenB: tokenB,
       amountDesiredA: parseEther(amountDesiredA.toString()),
       amountDesiredB: parseEther(amountDesiredB.toString()),
+      amountAMin: parseEther( (amountDesiredA * threshold ).toString()),
+      amountABin: parseEther( (amountDesiredB * threshold ).toString()),
       deadline: hexToBigInt('0x32') // current timestamp + 50
 	}
 
@@ -105,13 +113,13 @@
 
 </script>
 
-<h1 class="text-2xl text-center font-bold underline">
+<h1 class="text-3xl text-center font-bold underline">
   Demo for call data optimization
 </h1>
 
 <section class="px-10 my-10 text-center font-black border-2 border-pink-300">
 
-  <h2 class="text-1xl font-bold">
+  <h2 class="text-2xl font-bold">
     Add liquidity
   </h2>
 
@@ -120,7 +128,17 @@
     <TokenField bind:amountDesired={amountDesiredA} bind:token={tokenA} tokenLists={tokenLists1}  />
     <TokenField bind:amountDesired={amountDesiredB} bind:token={tokenB} tokenLists={tokenLists2}  />
 
-    <div class="bg-slate-400">
+    <div class="flex justify-center items-center bg-slate-400">
+      <div class="rounded-md">
+        Select Threshold
+      </div>
+      <select bind:value={threshold} class="rounded-md text-slate-700">
+        {#each Object.entries(thresholds) as [key, value] (key)}
+          <option value={value} >
+            {key}
+          </option>
+        {/each}
+      </select> 
       <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => addLiquidityCompressed()}
         >Supply
       </button>
@@ -133,6 +151,8 @@
     {modelResult.tokenB}
     {modelResult.amountDesiredA}
     {modelResult.amountDesiredB}
+    {modelResult.amountAMin}
+    {modelResult.amountABin}
     {modelResult.deadline}
   </div>
 
