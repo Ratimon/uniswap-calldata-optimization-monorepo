@@ -4,5 +4,6 @@
 @generated/=generated/
 @forge-std/=lib/forge-std/src/
 @openzeppelin/=lib/openzeppelin-contracts/
+@solmate/=lib/solmate/src/
 @solid-grinder/=node_modules/solid-grinder/contracts/
 forge-deploy/=node_modules/forge-deploy/contracts/

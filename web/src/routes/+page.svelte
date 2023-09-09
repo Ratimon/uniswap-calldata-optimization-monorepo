@@ -38,6 +38,8 @@
   async function encode_addLiquidityData() {
 
     contracts.execute(async ({contracts, account}) => {
+
+      console.log('account.address', account.address);
     
       const payload = await contracts.UniswapV2Router02_Encoder.read.encode_addLiquidityData(
       [
