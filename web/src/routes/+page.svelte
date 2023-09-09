@@ -121,7 +121,7 @@
     <TokenField bind:amountDesired={amountDesiredB} bind:token={tokenB} tokenLists={tokenLists2}  />
 
     <div class="bg-slate-400">
-      <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => encode_addLiquidityData()}
+      <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => addLiquidityCompressed()}
         >Supply
       </button>
     </div>

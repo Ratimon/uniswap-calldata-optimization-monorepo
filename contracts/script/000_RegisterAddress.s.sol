@@ -21,7 +21,9 @@ contract RegisterAddressScript is Script {
 
         console.log(string.concat("is address registered: "));
         console.logBool(table.isAddressExisted(addr));
+        
         vm.broadcast();
+
         table.register(addr);
         console.log(string.concat("is address registered: "));
         console.logBool(table.isAddressExisted(addr));
