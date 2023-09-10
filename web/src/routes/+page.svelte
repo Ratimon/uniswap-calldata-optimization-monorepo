@@ -1,6 +1,7 @@
 <script lang="ts">
-  import {hexToNumber, hexToBigInt, parseEther, parseUnits, zeroAddress} from 'viem';
-  import {connection, account, pendingActions, network, contracts} from '$lib/web3';
+  import {formatUnits, hexToNumber, hexToBigInt, parseEther, parseUnits, zeroAddress} from 'viem';
+  import {initialContractsInfos} from '$lib/config';
+  import { balanceETH, balanceMockERC20_A, balanceMockERC20_B, connection, account, pendingActions, network, contracts} from '$lib/web3';
   import TokenField from './TokenField.svelte';
 
   let tokenLists1: { [key: string]: `0x${string}`; } = {
@@ -25,12 +26,41 @@
   let amountDesiredB: number = 2500;
   let threshold: number  = 0.95;
 
+  $: currentBalanceETH = $balanceETH.balance;
+  $: currentBalanceETHInString = formatUnits(
+		currentBalanceETH,
+		Number(18),
+	);
+
+  // $: currentBalanceMockERC20_A = Number($balanceMockERC20_A.balance);
+  $: currentBalanceMockERC20_A = Number(formatUnits(
+		$balanceMockERC20_A.balance,
+		Number(18),
+	));
+
+  // $: currentBalanceMockERC20_AInString = formatUnits(
+	// 	$balanceMockERC20_A.balance,
+	// 	Number(18),
+	// );
+
+  // $: currentBalanceMockERC20_B = Number($balanceMockERC20_B.balance);
+  $: currentBalanceMockERC20_B =Number(formatUnits(
+		$balanceMockERC20_B.balance,
+		Number(18),
+	));
+
+  // $: currentBalanceMockERC20_BInString = formatUnits(
+	// 	$balanceMockERC20_B.balance,
+	// 	Number(18),
+	// );
+
+
   $: modelResult =  {
       tokenA: tokenA,
       tokenB: tokenB,
       amountDesiredA: parseEther(amountDesiredA.toString()),
       amountDesiredB: parseEther(amountDesiredB.toString()),
-      amountAMin: parseEther( (amountDesiredA * threshold ).toString()),
+      amountAMin: parseEther( ( amountDesiredA * threshold ).toString()),
       amountABin: parseEther( (amountDesiredB * threshold ).toString()),
       deadline: hexToBigInt('0x32') // current timestamp + 50
 	}
@@ -127,8 +157,8 @@
 
   <div class="px-4 py-10 sm:px-6 lg:px-8 flex flex-col space-y-5 max-w-2xl lg:max-w-7xl">
 
-    <TokenField bind:amountDesired={amountDesiredA} bind:token={tokenA} tokenLists={tokenLists1}  />
-    <TokenField bind:amountDesired={amountDesiredB} bind:token={tokenB} tokenLists={tokenLists2}  />
+    <TokenField bind:token={tokenA} bind:amountDesired={amountDesiredA} amountMax={currentBalanceMockERC20_A} tokenLists={tokenLists1}  />
+    <TokenField bind:token={tokenB} bind:amountDesired={amountDesiredB} amountMax={currentBalanceMockERC20_B} tokenLists={tokenLists2}  />
 
     <div class="flex justify-center items-center bg-slate-400">
       <div class="rounded-md">
@@ -156,6 +186,7 @@
     {modelResult.amountAMin}
     {modelResult.amountABin}
     {modelResult.deadline}
+    {currentBalanceETHInString} ETH
   </div>
 
 </section>

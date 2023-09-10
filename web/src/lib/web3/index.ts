@@ -3,6 +3,8 @@ import {contractsInfos, defaultRPC, initialContractsInfos, blockTime, localRPC} 
 import {initAccountData} from './account-data';
 import {initTransactionProcessor} from 'ethereum-tx-observer';
 import {initViemContracts} from 'web3-connection-viem';
+import {initBalance} from '$lib/blockchain/state/balance';
+import {zeroAddress} from 'viem';
 import {logs} from 'named-logs';
 
 const logger = logs('jolly-roger');
@@ -87,6 +89,24 @@ contractsInfos.subscribe((contractsInfos) => {
 export const {connection, network, account, pendingActions, execution, execute, devProvider} = stores;
 
 export const contracts = initViemContracts(execute);
+
+export const balanceETH = initBalance({
+	token: zeroAddress,
+	connection,
+	account,
+});
+
+export const balanceMockERC20_A = initBalance({
+	token: initialContractsInfos.contracts.MockERC20_A.address,
+	connection,
+	account,
+});
+
+export const balanceMockERC20_B = initBalance({
+	token: initialContractsInfos.contracts.MockERC20_B.address,
+	connection,
+	account,
+});
 
 if (typeof window !== 'undefined') {
 	(window as any).execution = execution;

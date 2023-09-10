@@ -7,6 +7,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.9
   autoprefixer: ^10.4.15
   daisyui: ^3.6.1
+  eip-1193: ^0.4.7
   ethereum-tx-observer: ^0.0.3
   named-logs: ^0.2.2
   postcss: ^8.4.29
@@ -40,6 +41,7 @@ devDependencies:
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.3
   autoprefixer: 10.4.15_postcss@8.4.29
   daisyui: 3.6.4
+  eip-1193: 0.4.7
   postcss: 8.4.29
   postcss-load-config: 4.0.1_postcss@8.4.29
   svelte: 4.2.0
@@ -683,6 +685,10 @@ packages:
 
   /dlv/1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
+    dev: true
+
+  /eip-1193/0.4.7:
+    resolution: {integrity: sha512-wpAtKtTeQCE1vubTNV6o8yQD3J/4CBZBvmW8nKBSOTnKi2jr6Dr+j7Xk9OHHCP48ugsE1E/03wDs6jYTBebz6w==}
     dev: true
 
   /electron-to-chromium/1.4.508:

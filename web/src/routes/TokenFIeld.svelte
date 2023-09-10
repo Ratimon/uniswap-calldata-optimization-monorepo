@@ -1,9 +1,15 @@
 <script lang="ts">
  
-  export let tokenLists: { [key: string]: `0x${string}`; };
-  export let amountDesired: Number;
   export let token: string = "Select Token";
-
+  export let amountDesired: number;
+  export let amountMax: number;
+  
+  export let tokenLists: { [key: string]: `0x${string}`; };
+ 
+  const selectMaxvalue = () => {
+    amountDesired = amountMax;
+  }
+  
 </script>
 
 
@@ -13,7 +19,7 @@
         Amount to be added
       </div>
       <div class="mx-2">
-        Balance
+        Current Balance: {amountMax}
       </div>
     </div>
 
@@ -29,7 +35,7 @@
         </label>
       </form>
 
-      <button class="bg-slate-400 hover:bg-slate-600 rounded-md border-2 border-pink-300">
+      <button  on:click={selectMaxvalue} class="bg-slate-400 hover:bg-slate-600 rounded-md border-2 border-pink-300">
         Max
       </button>
 
