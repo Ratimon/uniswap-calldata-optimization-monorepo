@@ -1,6 +1,5 @@
 <script lang="ts">
   import {formatUnits, hexToNumber, hexToBigInt, parseEther, parseUnits, zeroAddress} from 'viem';
-  import {initialContractsInfos} from '$lib/config';
   import { balanceETH, balanceMockERC20_A, balanceMockERC20_B, connection, account, pendingActions, network, contracts} from '$lib/web3';
   import TokenField from './TokenField.svelte';
 
@@ -32,28 +31,15 @@
 		Number(18),
 	);
 
-  // $: currentBalanceMockERC20_A = Number($balanceMockERC20_A.balance);
   $: currentBalanceMockERC20_A = Number(formatUnits(
 		$balanceMockERC20_A.balance,
 		Number(18),
 	));
 
-  // $: currentBalanceMockERC20_AInString = formatUnits(
-	// 	$balanceMockERC20_A.balance,
-	// 	Number(18),
-	// );
-
-  // $: currentBalanceMockERC20_B = Number($balanceMockERC20_B.balance);
   $: currentBalanceMockERC20_B =Number(formatUnits(
 		$balanceMockERC20_B.balance,
 		Number(18),
 	));
-
-  // $: currentBalanceMockERC20_BInString = formatUnits(
-	// 	$balanceMockERC20_B.balance,
-	// 	Number(18),
-	// );
-
 
   $: modelResult =  {
       tokenA: tokenA,
@@ -65,47 +51,6 @@
       deadline: hexToBigInt('0x32') // current timestamp + 50
 	}
 
-  async function encode_addLiquidityData() {
-
-    contracts.execute(async ({contracts, account}) => {
-
-      console.log('account.address', account.address);
-    
-      const payload = await contracts.UniswapV2Router02_Encoder.read.encode_addLiquidityData(
-      [
-        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
-        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
-        parseEther('1200'),
-        parseEther('2500'),
-        parseEther('1000'),
-        parseEther('2000'),
-        '0xDEADDEADDEADDEADDEADDEADDEADDEADDEADDEAD',
-        parseUnits( '100' , 0)
-      ]
-      );
-
-      console.log('payload', payload);
-
-      console.log('blocknumber: hex', await $connection.provider.request({
-        method: 'eth_blockNumber'
-      }));
-
-      console.log('blocknumber2: Number', hexToNumber(await $connection.provider.request({
-        method: 'eth_blockNumber'
-      })));
-
-      let BlockByNumber =  await $connection.provider.request({
-        method: 'eth_getBlockByNumber',
-        params: ['latest', true],
-      })
-
-      console.log('Block Timestamp 1', hexToNumber(BlockByNumber.timestamp)+hexToNumber('0x32'));
-      console.log('Block Timestamp 2', hexToNumber(BlockByNumber.timestamp)+50);
-
-		  });
-
-  }
-
   function addLiquidityCompressed() {
 
 		contracts.execute(async ({contracts, account}) => {
@@ -114,8 +59,6 @@
         method: 'eth_getBlockByNumber',
         params: ['latest', true],
       })
-
-      // console.log('Block Timestamp', hexToNumber(blockByNumber.timestamp));
 
       let payload = await contracts.UniswapV2Router02_Encoder.read.encode_addLiquidityData(
       [
@@ -133,10 +76,7 @@
       console.log('payload', payload);
 
 			await contracts.UniswapV2Router02_Optimized.write.addLiquidityCompressed(
-        // hardcoded for demo
         [payload],
-        // ["0x000001000002000000410d586a20a4c00000000000878678326eac9000000000003635c9adc5dea000000000006c6b935b8bbd4000000000030000000064"],
-        // ["0x000001000001000000410d586a20a4c00000000000878678326eac9000000000003635c9adc5dea000000000006c6b935b8bbd4000000000010000000064"],
         {account: account.address}
 
       );
@@ -176,17 +116,6 @@
       </button>
     </div>
 
-  </div>
-
-  <div>
-    {modelResult.tokenA}
-    {modelResult.tokenB}
-    {modelResult.amountDesiredA}
-    {modelResult.amountDesiredB}
-    {modelResult.amountAMin}
-    {modelResult.amountABin}
-    {modelResult.deadline}
-    {currentBalanceETHInString} ETH
   </div>
 
 </section>

@@ -3,7 +3,6 @@
   export let token: string = "Select Token";
   export let amountDesired: number;
   export let amountMax: number;
-  
   export let tokenLists: { [key: string]: `0x${string}`; };
  
   const selectMaxvalue = () => {
