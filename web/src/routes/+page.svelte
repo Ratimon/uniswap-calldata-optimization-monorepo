@@ -1,6 +1,7 @@
 <script lang="ts">
   import {formatUnits, hexToNumber, hexToBigInt, parseEther, parseUnits, zeroAddress} from 'viem';
   import { balanceETH, balanceMockERC20_A, balanceMockERC20_B, connection, account, pendingActions, network, contracts} from '$lib/web3';
+  import {time} from '$lib/time';
   import TokenField from './TokenField.svelte';
 
   let tokenLists1: { [key: string]: `0x${string}`; } = {
@@ -24,12 +25,6 @@
   let amountDesiredA: number = 1200.5;
   let amountDesiredB: number = 2500;
   let threshold: number  = 0.95;
-
-  $: currentBalanceETH = $balanceETH.balance;
-  $: currentBalanceETHInString = formatUnits(
-		currentBalanceETH,
-		Number(18),
-	);
 
   $: currentBalanceMockERC20_A = Number(formatUnits(
 		$balanceMockERC20_A.balance,
@@ -55,10 +50,22 @@
 
 		contracts.execute(async ({contracts, account}) => {
 
-      let blockByNumber =  await $connection.provider.request({
-        method: 'eth_getBlockByNumber',
-        params: ['latest', true],
-      })
+      // let block =  await $connection.provider.request({
+      //   method: 'eth_getBlockByNumber',
+      //   params: ['latest', true],
+      // })
+
+      // console.log('blocknumber2: Number', hexToNumber(await $connection.provider.request({
+      //   method: 'eth_blockNumber'
+      // })));
+
+      // console.log('block', $connection.provider.request({
+      //   method: 'eth_getBlockByNumber',
+      //   params: ['latest', true],
+      // }));
+      // console.log('blockByNumber', block);
+
+      console.log('time', $time.timestamp);
 
       let payload = await contracts.UniswapV2Router02_Encoder.read.encode_addLiquidityData(
       [
@@ -69,7 +76,7 @@
         parseEther('1000'),
         parseEther('2000'),
         account.address,
-        hexToBigInt(blockByNumber.timestamp) + modelResult.deadline
+        parseUnits($time.timestamp.toString(), 0)  + modelResult.deadline
       ]
       );
 

@@ -8,7 +8,8 @@
     "preinstall": "npx only-allow pnpm",
     "---------------------- UTILITIES ----------------------": "",
     "env": "ldenv env",
-    "contracts:deploy": "pnpm --filter ./contracts deploy",
+    "contracts:deploy": "pnpm --filter ./contracts deploy_all",
+    "contracts:prepare": "pnpm --filter ./contracts export-local",
     "web:dev": "pnpm --filter ./web dev"
   },
   "repository": {
@@ -21,7 +22,7 @@
     "url": "https://github.com/Ratimon/uniswap-calldata-optimization-monorepo/issues"
   },
   "homepage": "https://github.com/Ratimon/uniswap-calldata-optimization-monorepo#readme",
-  "dependencies": {
+  "devDependencies": {
     "ldenv": "^0.3.7"
   }
 }
