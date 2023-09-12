@@ -96,13 +96,13 @@
   Demo for call data optimization
 </h1>
 
-<section class="px-10 my-10 text-center font-black border-2 border-pink-300">
+<section class="flex justify-center px-10 my-10 text-center font-black border-2 border-pink-300">
 
-  <h2 class="text-2xl font-bold">
-    Add liquidity
-  </h2>
+  <div class="px-4 py-10 sm:px-6 lg:px-8 flex flex-col space-y-5">
 
-  <div class="px-4 py-10 sm:px-6 lg:px-8 flex flex-col space-y-5 max-w-2xl lg:max-w-7xl">
+    <h2 class="text-2xl font-bold">
+      Add liquidity
+    </h2>
 
     <TokenField bind:token={tokenA} bind:amountDesired={amountDesiredA} amountMax={currentBalanceMockERC20_A} tokenLists={tokenLists1}  />
     <TokenField bind:token={tokenB} bind:amountDesired={amountDesiredB} amountMax={currentBalanceMockERC20_B} tokenLists={tokenLists2}  />
@@ -118,7 +118,7 @@
           </option>
         {/each}
       </select> 
-      <button tabindex="0" class="btn btn-primary text-error-content" on:click={() => addLiquidityCompressed()}
+      <button tabindex="0" class="bg-reverse-primary btn btn-primary text-error-content" on:click={() => addLiquidityCompressed()}
         >Supply
       </button>
     </div>

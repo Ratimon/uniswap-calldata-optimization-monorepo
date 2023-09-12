@@ -12,9 +12,10 @@
 </script>
 
 
-<div class="flex flex-col">
+<div class="flex flex-col ">
+
     <div class="flex flex-row justify-between h-8 bg-slate-400">
-      <div class="mx-2">
+      <div class="mx-2 md:text-2xl">
         Amount to be added
       </div>
       <div class="mx-2">
@@ -22,19 +23,19 @@
       </div>
     </div>
 
-    <div class="px-4 flex flex-row justify-between h-12 bg-slate-400">
+    <div class="px-4 flex flex-row place-content-evenly h-12 bg-slate-400">
       <form>
         <label>
           <input
             name="Amount to be added"
             bind:value={amountDesired}
             autocomplete="off"
-            class="text-slate-700"
+            class="w-full sm:w-96 text-slate-700"
           />
         </label>
       </form>
 
-      <button  on:click={selectMaxvalue} class="bg-slate-400 hover:bg-slate-600 rounded-md border-2 border-pink-300">
+      <button  on:click={selectMaxvalue} class="bg-slate-400 hover:bg-slate-600 w-24 rounded-md border-2 border-pink-300">
         Max
       </button>
 
