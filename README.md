@@ -1,33 +1,114 @@
-# uniswap-calldata-optimization-monorepo
+<h1>📚 Calldata Optimization Demo with Monorepo Architecture 📚</h1>
+
+A full-stack snippet & example to demonstrate how to implement calldata gas optimization with [`Solid Grinder`](https://github.com/Ratimon/solid-grinder)
+
+If you wonder how calldata optimization works, you can check it out at this [`guide`](https://github.com/Ratimon/solid-grinder#how-it-works)
+
+> **Note**💡
+
+> The code is not audited yet. Please use it carefully in production.
+
+- [Installation](#installation)
+- [Quickstart](#quickstart)
+- [Troubleshooting](#troubleshooting)
+- [Acknowledgement](#acknowledgement)
+
+
+## Installation
+
+Assuming that you have [zellij](https://zellij.dev/) installed:
+
+```bash
+pnpm i
+```
+
+```bash
+cd contracts
+pnpm i
+```
+
+```bash
+cd web
+pnpm i
+```
 
 
 ## Quickstart
 
-### Smart Contracts
+There are two main components, which are **blockchain component** and **web component**
 
-1. Spinning up environment
+1. Spinning up the **blockchain component**:
 
 ```sh
 cd contracts
 pnpm start
 ```
 
-2. deploy contracts to localnetwork
+This will open a customized terminal with three sub-terminals, including anvil, testing and interaction.
+
+2. In another terminal, run deployment scripts to the local network:
 
 ```sh
-pnpm deploy_all
+pnpm contracts:deploy
+```
+This will atomically deploy separate steps of deployment scripts.
+
+3. Export deployment artifacts with formated schema to be used later in front-end part:
+
+```sh
+pnpm contracts:prepare
+```
+This schema includes **address** and **abi**.
+
+4. Running the **front-end component**:
+
+```sh
+pnpm web:dev
 ```
 
-3. kill environment when not needed
+> **Note**💡
+
+5. (Optional) kill **blockchain component** when not needed
 
 ```sh
 cd contracts
 pnpm stop
 ```
 
-### Frontend
+
+## Troubleshooting
+
+These are some guidlines to do when the **front-end component** can not sync to the **blockchain component**:
+
+1. Delete generated files after deployment in your [`contracts/broadcast/`](https://github.com/Ratimon/uniswap-calldata-optimization-monorepo) to clear the cache, and then re-deploy again.
+
+2. Go to your `Metamask`` extention and clear the data. There sometimes are  updates in local nonce, so the checksum in front-end pass doesnot match the right ones.
 
 ```sh
-cd web
+-> Settings -> Advanced -> Clear activity and nonce data
+```
+
+3. Rebuild again
+
+```sh
 pnpm dev
 ```
+
+4. Make sure your metamask connect to the same address which has been registered. Otherwise, register it!!
+
+> 💡 Note:
+
+You can directly send Tx to chain via your CLI:
+
+```sh
+cast send <Contract Address> "register(address)" <Sender Address> <Addr as Argument> --private-key <Sender Privatekey>
+```
+
+5. Open new Chrome tab every time after you have spinned up blockchain compoment and deployed the contract in order to make sure the front-end does not cache the wrong config.
+
+
+## Acknowledgement
+
+> 💡 Note:
+
+We acknowledge, use, and get inspiration from this amazing template: [jolly-roger](https://github.com/wighawag/jolly-roger).
