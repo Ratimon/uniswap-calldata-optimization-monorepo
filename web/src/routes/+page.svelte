@@ -50,21 +50,6 @@
 
 		contracts.execute(async ({contracts, account}) => {
 
-      // let block =  await $connection.provider.request({
-      //   method: 'eth_getBlockByNumber',
-      //   params: ['latest', true],
-      // })
-
-      // console.log('blocknumber2: Number', hexToNumber(await $connection.provider.request({
-      //   method: 'eth_blockNumber'
-      // })));
-
-      // console.log('block', $connection.provider.request({
-      //   method: 'eth_getBlockByNumber',
-      //   params: ['latest', true],
-      // }));
-      // console.log('blockByNumber', block);
-
       console.log('time', $time.timestamp);
 
       let payload = await contracts.UniswapV2Router02_Encoder.read.encode_addLiquidityData(

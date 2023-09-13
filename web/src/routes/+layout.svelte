@@ -41,7 +41,6 @@
 			pages={[
 				{pathname: '/', title: 'Home'},
 				{pathname: '/table/', title: 'Address Table'},
-				{pathname: '/about/', title: 'About'},
 			]}
 		/>
 	</div>
