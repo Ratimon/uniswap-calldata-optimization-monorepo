@@ -22,12 +22,12 @@ Assuming that you have [zellij](https://zellij.dev/) installed:
 pnpm i
 ```
 
-```bash
+```sh
 cd contracts
 pnpm i
 ```
 
-```bash
+```sh
 cd web
 pnpm i
 ```
@@ -51,7 +51,7 @@ This will open a customized terminal with three sub-terminals, including anvil, 
 ```sh
 pnpm contracts:deploy
 ```
-This will atomically deploy separate steps of deployment scripts.
+This will atomically deploy sets of deployment scripts.
 
 3. Export deployment artifacts with formated schema to be used later in front-end part:
 
@@ -82,10 +82,10 @@ These are some guidlines to do when the **front-end component** can not sync to 
 
 1. Delete generated files after deployment in your [`contracts/broadcast/`](https://github.com/Ratimon/uniswap-calldata-optimization-monorepo) to clear the cache, and then re-deploy again.
 
-2. Go to your `Metamask`` extention and clear the data. There sometimes are  updates in local nonce, so the checksum in front-end pass doesnot match the right ones.
+2. Go to your **Metamask** extention and clear the data. There sometimes are  updates in local nonce, so the checksum in front-end pass doesnot match the right ones.
 
 ```sh
--> Settings -> Advanced -> Clear activity and nonce data
+Settings -> Advanced -> Clear activity and nonce data
 ```
 
 3. Rebuild again
@@ -98,13 +98,13 @@ pnpm dev
 
 > 💡 Note:
 
-You can directly send Tx to chain via your CLI:
+You can directly send Tx to the chain via your CLI:
 
 ```sh
 cast send <Contract Address> "register(address)" <Sender Address> <Addr as Argument> --private-key <Sender Privatekey>
 ```
 
-5. Open new Chrome tab every time after you have spinned up blockchain compoment and deployed the contract in order to make sure the front-end does not cache the wrong config.
+5. Open new **Chrome** tab every time after you have spinned up blockchain compoment and deployed the contract in order to make sure the front-end does not cache the wrong config.
 
 
 ## Acknowledgement
