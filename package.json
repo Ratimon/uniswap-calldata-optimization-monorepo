@@ -9,7 +9,7 @@
     "---------------------- UTILITIES ----------------------": "",
     "env": "ldenv env",
     "contracts:deploy": "pnpm --filter ./contracts deploy_all",
-    "contracts:prepare": "pnpm --filter ./contracts export-local",
+    "contracts:export-local": "pnpm --filter ./contracts export-local",
     "web:dev": "pnpm --filter ./web dev"
   },
   "repository": {

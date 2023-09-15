@@ -44,6 +44,17 @@ cd contracts
 pnpm start
 ```
 
+> **Note**💡
+
+In the first time, it is needed to install relevant dependencies:
+
+```sh
+cd contracts
+pnpm prepare
+```
+
+If it appears that you need to intall more dependencies, just delete `/contracts/lib`, modify the command and re-run it.
+
 This will open a customized terminal with three sub-terminals, including anvil, testing and interaction.
 
 2. In another terminal, run deployment scripts to the local network:
@@ -56,7 +67,7 @@ This will atomically deploy sets of deployment scripts.
 3. Export deployment artifacts with formated schema to be used later in front-end part:
 
 ```sh
-pnpm contracts:prepare
+pnpm contracts:export-local
 ```
 This schema includes **address** and **abi**.
 
