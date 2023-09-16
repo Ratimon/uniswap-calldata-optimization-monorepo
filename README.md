@@ -11,6 +11,7 @@ If you wonder how calldata optimization works, you can check it out at this [`gu
 - [Installation](#installation)
 - [Quickstart](#quickstart)
 - [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
 - [Acknowledgement](#acknowledgement)
 
 
@@ -44,6 +45,8 @@ cd contracts
 pnpm start
 ```
 
+If it appears that you need to intall more dependencies, just delete `/contracts/lib`, modify the command and re-run it.
+
 > **Note**💡
 
 In the first time, it is needed to install relevant dependencies:
@@ -52,8 +55,6 @@ In the first time, it is needed to install relevant dependencies:
 cd contracts
 pnpm prepare
 ```
-
-If it appears that you need to intall more dependencies, just delete `/contracts/lib`, modify the command and re-run it.
 
 This will open a customized terminal with three sub-terminals, including anvil, testing and interaction.
 
@@ -116,6 +117,11 @@ cast send <Contract Address> "register(address)" <Sender Address> <Addr as Argum
 ```
 
 5. Open new **Chrome** tab every time after you have spinned up blockchain compoment and deployed the contract in order to make sure the front-end does not cache the wrong config.
+
+
+## Contributing
+
+See our [`contributing guidelines`](./CONTRIBUTING.md).
 
 
 ## Acknowledgement
