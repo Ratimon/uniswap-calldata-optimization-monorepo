@@ -123,6 +123,8 @@ cast send <Contract Address> "register(address)" <Sender Address> <Addr as Argum
 
 See our [`contributing guidelines`](./CONTRIBUTING.md).
 
+We are currently still in an experimental phase and would love to hear your feedback on how we can improve [`Solid Grinder`](https://github.com/Ratimon/solid-grinder).
+
 
 ## Acknowledgement
 
