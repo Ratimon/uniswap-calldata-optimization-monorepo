@@ -29,7 +29,7 @@ pnpm i
 ```
 
 ```sh
-cd web
+cd web-svelte
 pnpm i
 ```
 
@@ -75,7 +75,7 @@ This schema includes **address** and **abi**.
 4. Running the **front-end component**:
 
 ```sh
-pnpm web:dev
+pnpm web:svelte:dev
 ```
 
 > **Note**💡
