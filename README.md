@@ -123,7 +123,15 @@ cast send <Contract Address> "register(address)" <Sender Address> <Addr as Argum
 
 See our [`contributing guidelines`](./CONTRIBUTING.md).
 
-We are currently still in an experimental phase and would love to hear your feedback on how we can improve [`Solid Grinder`](https://github.com/Ratimon/solid-grinder).
+We are currently still in an experimental phase leading up to a first audit and would love to hear your feedback on how we can improve `Solid Grinder`.
+
+If you want to say **thank you** or/and support active development of Solid Grinder:
+
+- Add a [GitHub Star](https://github.com/Ratimon/solid-grinder) to the
+  project.
+- Tweet about Solid Grinder.
+- Write interesting articles about the project on
+  [Medium](https://medium.com/), or your personal blog.
 
 
 ## Acknowledgement
