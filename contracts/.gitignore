@@ -13,6 +13,9 @@ docs/
 # local files
 *.local
 
+# env files
+.env.testnet
+
 # forge-deploy
 /generated
 /deployments/localhost

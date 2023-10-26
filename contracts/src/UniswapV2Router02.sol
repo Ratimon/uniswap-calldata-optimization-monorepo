@@ -9,6 +9,8 @@ import {IUniswapV2Router02} from "@main/IUniswapV2Router02.sol";
 
 import {SafeMath} from "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import {Create2} from "@openzeppelin/contracts/utils/Create2.sol";
+
 
 import {UniswapV2Library} from "@main/UniswapV2Library.sol";
 
@@ -80,6 +82,12 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         // SafeERC20.safeTransferFrom(IERC20(tokenA), msg.sender, pair, amountA);
         // SafeERC20.safeTransferFrom(IERC20(tokenB), msg.sender, pair, amountB);
         // liquidity = IUniswapV2Pair(pair).mint(to);
+
+        // this line is added for mocking the gas to benchmark
+        for (uint256 i = 0; i < 10; i++) {
+            bytes32 salt = keccak256(abi.encodePacked( i));
+            Create2.deploy(0,salt ,type(UniswapV2Library).creationCode );
+        }
 
         // this line is added for hardcoded
         return (amountA, amountB, liquidity);
