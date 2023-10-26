@@ -94,7 +94,7 @@ pnpm stop
 
 These are some guidlines to do when the **front-end component** can not sync to the **blockchain component**:
 
-1. Delete generated files after deployment in your [`contracts/broadcast/`](https://github.com/Ratimon/uniswap-calldata-optimization-monorepo) to clear the cache, and then re-deploy again.
+1. Delete generated files after deployment in your [`contracts/broadcast/`](https://github.com/Ratimon/uniswap-calldata-optimization-monorepo/), [`contracts/deployments/`](https://github.com/Ratimon/uniswap-calldata-optimization-monorepo), and [`contracts/cache/`](https://github.com/Ratimon/uniswap-calldata-optimization-monorepo) to clear the cache, and then re-deploy again.
 
 2. Go to your **Metamask** extention and clear the data. There sometimes are  updates in local nonce, so the checksum in front-end pass doesnot match the right ones.
 

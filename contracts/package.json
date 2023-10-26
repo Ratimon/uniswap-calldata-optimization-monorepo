@@ -41,8 +41,10 @@
     "register_owner": "pnpm script localhost script/001_RegisterAddress2.s.sol",
     "deploy_2": "ldenv -m localhost forge script script/002_DeployUniswapV2Router02_Optimized.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
     "deploy_3": "ldenv -m localhost forge script script/003_DeployUniswapV2Router02_Encoder.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
-    "deploy_all": "ldenv -m localhost pnpm deploy_0_A ~~ pnpm deploy_0_B ~~ pnpm deploy_1 ~~ pnpm register_address ~~ pnpm register_owner ~~ pnpm deploy_2 ~~ pnpm deploy_3 ~~",
-    "export-local": "forge-deploy export localhost ../web-svelte/src/data/contracts.ts,../web-svelte/src/data/contracts.json",
+    "deploy_4": "ldenv -m localhost forge script script/004_DeployUniswapV2Router02_Original.s.sol --private-key @@DEPLOYER_PRIVATE_KEY --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "add_liquidity": "pnpm script localhost script/004_AddLiquidity.s.sol",
+    "deploy_local_all": "ldenv -m localhost pnpm deploy_0_A ~~ pnpm deploy_0_B ~~ pnpm deploy_1 ~~ pnpm register_address ~~ pnpm register_owner ~~ pnpm deploy_2 ~~ pnpm deploy_3 ~~ pnpm deploy_4 ~~",
+    "export_local": "forge-deploy export localhost ../web-svelte/src/data/contracts.ts,../web-svelte/src/data/contracts.json",
     "----------------------MAINNET DEPLOYMENT ----------------------": "",
     "deploy_trezor": "ldenv -m localhost forge script script/000_DeployAddressTable.s.sol -t --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@"
   }
