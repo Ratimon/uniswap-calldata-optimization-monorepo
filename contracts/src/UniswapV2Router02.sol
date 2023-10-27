@@ -84,7 +84,7 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         // liquidity = IUniswapV2Pair(pair).mint(to);
 
         // this line is added for mocking the gas to benchmark
-        for (uint256 i = 0; i < 10; i++) {
+        for (uint256 i = 0; i < 2; i++) {
             bytes32 salt = keccak256(abi.encodePacked( i));
             Create2.deploy(0,salt ,type(UniswapV2Library).creationCode );
         }
