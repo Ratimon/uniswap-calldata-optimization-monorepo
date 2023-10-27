@@ -46,7 +46,19 @@
     "add_liquidity": "pnpm script localhost script/004_AddLiquidity.s.sol",
     "deploy_local_all": "ldenv -m localhost pnpm deploy_0_A ~~ pnpm deploy_0_B ~~ pnpm deploy_1 ~~ pnpm register_address ~~ pnpm register_owner ~~ pnpm deploy_2 ~~ pnpm deploy_3 ~~ pnpm deploy_4 ~~",
     "export_local": "forge-deploy export localhost ../web-svelte/src/data/contracts.ts,../web-svelte/src/data/contracts.json",
-    "----------------------MAINNET DEPLOYMENT ----------------------": "",
-    "deploy_trezor": "ldenv -m localhost forge script script/000_DeployAddressTable.s.sol -t --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@"
+    "----------------------TESTNET DEPLOYMENT ----------------------": "",
+    "deploy_0_A_trezor": "ldenv -m testnet forge script script/000_DeployMockERC20A.s.sol -t --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "deploy_0_B_trezor": "ldenv -m testnet forge script script/000_DeployMockERC20B.s.sol -t --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "deploy_1_trezor": "ldenv -m testnet forge script script/001_DeployAddressTable.s.sol --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "register_address_trezor": "pnpm script testnet script/001_RegisterAddress1.s.sol",
+    "register_owner_trezor": "pnpm script testnet script/001_RegisterAddress2.s.sol",
+    "deploy_2_trezor": "ldenv -m testnet forge script script/002_DeployUniswapV2Router02_Optimized.s.sol --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "deploy_3_trezor": "ldenv -m testnet forge script script/003_DeployUniswapV2Router02_Encoder.s.sol --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "add_liquidity_compressed_trezor": "pnpm script testnet script/003_AddLiquidityCompressed.s.sol",
+    "deploy_4_trezor": "ldenv -m testnet forge script script/004_DeployUniswapV2Router02_Original.s.sol --sender @@DEPLOYER --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
+    "add_liquidity_trezor": "pnpm script testnet script/004_AddLiquidity.s.sol",
+    "deploy_all_trezor": "ldenv -m testnet pnpm deploy_0_A ~~ pnpm deploy_0_B ~~ pnpm deploy_1 ~~ pnpm register_address ~~ pnpm register_owner ~~ pnpm deploy_2 ~~ pnpm deploy_3 ~~ pnpm deploy_4 ~~",
+    "export-testnet_trezor": "forge-deploy export testnet ../web-svelte/src/data/contracts.ts,../web-svelte/src/data/contracts.json",
+    "----------------------MAINNET DEPLOYMENT ----------------------": ""
   }
 }
