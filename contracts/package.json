@@ -55,7 +55,7 @@
     "register_owner_trezor": "ldenv -m optimism forge script script/001_RegisterAddress2.s.sol --trezor --sender @@DEPLOYER --mnemonic-derivation-paths \"m/44'/60'/0'/0/0\" --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
     "deploy_2_trezor": "ldenv -m optimism forge script script/002_DeployUniswapV2Router02_Optimized.s.sol --trezor --sender @@DEPLOYER --mnemonic-derivation-paths \"m/44'/60'/0'/0/0\" --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
     "deploy_3_trezor": "ldenv -m optimism forge script script/003_DeployUniswapV2Router02_Encoder.s.sol --trezor --sender @@DEPLOYER --mnemonic-derivation-paths \"m/44'/60'/0'/0/0\" --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
-    "add_liquidity_compressed_trezor": "pnpm script optimism script/003_AddLiquidityCompressed.s.sol",
+    "add_liquidity_compressed_trezor": "ldenv -m optimism forge script script/003_AddLiquidityCompressed.s.sol  --trezor --sender @@DEPLOYER --mnemonic-derivation-paths \"m/44'/60'/0'/0/0\" --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_UL --broadcast ~~ forge-deploy sync ~~ @@",
     "deploy_4_trezor": "ldenv -m optimism forge script script/004_DeployUniswapV2Router02_Original.s.sol --trezor --sender @@DEPLOYER --mnemonic-derivation-paths \"m/44'/60'/0'/0/0\" --rpc-url @@RPC_URL_:DEPLOYMENT_CONTEXT,RPC_URL --broadcast ~~ forge-deploy sync ~~ @@",
     "add_liquidity_trezor": "pnpm script optimism script/004_AddLiquidity.s.sol",
     "deploy_all_trezor": "ldenv -m optimism pnpm deploy_0_A ~~ pnpm deploy_0_B ~~ pnpm deploy_1 ~~ pnpm register_address ~~ pnpm register_owner ~~ pnpm deploy_2 ~~ pnpm deploy_3 ~~ pnpm deploy_4 ~~",
