@@ -12,6 +12,7 @@ If you wonder how calldata optimization works, you can check it out at this [`gu
 
 - [Installation](#installation)
 - [Quickstart](#quickstart)
+- [Production](#production)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [Acknowledgement](#acknowledgement)
@@ -63,14 +64,14 @@ This will open a customized terminal with three sub-terminals, including anvil, 
 2. In another terminal, run deployment scripts to the local network:
 
 ```sh
-pnpm contracts:deploy
+pnpm contracts:deploy_local_all
 ```
 This will atomically deploy sets of deployment scripts.
 
 3. Export deployment artifacts with formated schema to be used later in front-end part:
 
 ```sh
-pnpm contracts:export-local
+pnpm contracts:export_local
 ```
 This schema includes **address** and **abi**.
 

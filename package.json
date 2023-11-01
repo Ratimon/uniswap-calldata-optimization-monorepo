@@ -8,8 +8,8 @@
     "preinstall": "npx only-allow pnpm",
     "---------------------- UTILITIES ----------------------": "",
     "env": "ldenv env",
-    "contracts:deploy": "pnpm --filter ./contracts deploy_all",
-    "contracts:export-local": "pnpm --filter ./contracts export-local",
+    "contracts:deploy_local_all": "pnpm --filter ./contracts deploy_local_all",
+    "contracts:export_local": "pnpm --filter ./contracts export_local",
     "web:svelte:dev": "pnpm --filter ./web-svelte dev"
   },
   "repository": {
