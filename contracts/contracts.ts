@@ -1,6 +1,6 @@
 export default {
-  "name": "localhost",
-  "chainId": "31337",
+  "name": "goerli",
+  "chainId": "5",
   "contracts": {
     "AddressTable": {
       "abi": [
@@ -137,7 +137,7 @@ export default {
           "type": "function"
         }
       ],
-      "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+      "address": "0x9a6B7caf7dEf6aC3a09be05F72A15ecD32F5A47c"
     },
     "MockERC20_A": {
       "abi": [
@@ -509,7 +509,7 @@ export default {
           "type": "function"
         }
       ],
-      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      "address": "0xf23249471cC0E0f3874F482215f62B00C8e5E2bF"
     },
     "MockERC20_B": {
       "abi": [
@@ -881,7 +881,122 @@ export default {
           "type": "function"
         }
       ],
-      "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+      "address": "0x01D1BFBA56654d7736fE4d0D51Aacc147B3a6589"
+    },
+    "UniswapV2Router02": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_factory",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "_WETH",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "WETH",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "tokenA",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenB",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountADesired",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountBDesired",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountAMin",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountBMin",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "deadline",
+              "type": "uint256"
+            }
+          ],
+          "name": "addLiquidity",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "amountA",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountB",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "liquidity",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "factory",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "stateMutability": "payable",
+          "type": "receive"
+        }
+      ],
+      "address": "0x73E7cE2Fc627B633aD184c471374397001586ADE"
     },
     "UniswapV2Router02_Encoder": {
       "abi": [
@@ -1026,7 +1141,7 @@ export default {
           "type": "function"
         }
       ],
-      "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F"
+      "address": "0x2Bf13F9e148c6D3A098e2e873392f63Db0EF584b"
     },
     "UniswapV2Router02_Optimized": {
       "abi": [
@@ -1240,7 +1355,7 @@ export default {
           "type": "receive"
         }
       ],
-      "address": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+      "address": "0x8c8af7C9b8B38165A3177925C06B063611e3a86F"
     }
   }
 } as const;

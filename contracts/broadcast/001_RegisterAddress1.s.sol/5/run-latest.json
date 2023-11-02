@@ -1,0 +1,49 @@
+{
+  "transactions": [
+    {
+      "hash": "0x5b6c3f6e827a15b6bf530ed863a5861feb38ad07879a79ff30edfc05c65916d4",
+      "transactionType": "CALL",
+      "contractName": null,
+      "contractAddress": "0x9a6B7caf7dEf6aC3a09be05F72A15ecD32F5A47c",
+      "function": null,
+      "arguments": null,
+      "transaction": {
+        "type": "0x02",
+        "from": "0x07310240dddc499a6e53799f5227fd5a9647bba9",
+        "to": "0x9a6b7caf7def6ac3a09be05f72a15ecd32f5a47c",
+        "gas": "0x1813c",
+        "value": "0x0",
+        "data": "0x4420e486000000000000000000000000deaddeaddeaddeaddeaddeaddeaddeaddeaddead",
+        "nonce": "0x3",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [
+    {
+      "transactionHash": "0x5b6c3f6e827a15b6bf530ed863a5861feb38ad07879a79ff30edfc05c65916d4",
+      "transactionIndex": "0x4",
+      "blockHash": "0xcd6139d12501e9c277bc2ff9ecc1afe286d22a52090da8073db416004b5bcc94",
+      "blockNumber": "0x982b20",
+      "from": "0x07310240DdDC499A6E53799F5227Fd5A9647Bba9",
+      "to": "0x9a6B7caf7dEf6aC3a09be05F72A15ecD32F5A47c",
+      "cumulativeGasUsed": "0x75583",
+      "gasUsed": "0x116e8",
+      "contractAddress": null,
+      "logs": [],
+      "status": "0x1",
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "effectiveGasPrice": "0xb2d05e1b"
+    }
+  ],
+  "libraries": [],
+  "pending": [],
+  "returns": {},
+  "timestamp": 1698910607,
+  "chain": 5,
+  "multi": false,
+  "commit": "dc7dcc8"
+}
