@@ -17,13 +17,13 @@ contract AddLiquidityScript is Script {
     function run() public {
 
 
-        address tokenA = address(0);
-        address tokenB = address(0);
+        address tokenA = 0xdeaDDeADDEaDdeaDdEAddEADDEAdDeadDEADDEaD;
+        address tokenB = 0xdeaDDeADDEaDdeaDdEAddEADDEAdDeadDEADDEaD;
         uint256 amountADesired = 0;
         uint256 amountBDesired = 0;
         uint256 amountAMin = 0;
         uint256 amountBMin = 0;
-        address to  = address(0);
+        address to  = 0xdeaDDeADDEaDdeaDdEAddEADDEAdDeadDEADDEaD;
         uint256 deadline = block.timestamp + 1000;
 
 
