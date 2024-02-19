@@ -2,8 +2,6 @@
 
 A full-stack snippet & example to demonstrate how to implement calldata gas optimization with [`Solid Grinder`](https://github.com/Ratimon/solid-grinder)
 
-![Logo](./assets/logo.png)
-
 If you wonder how calldata optimization works, you can check it out at this [`guide`](https://github.com/Ratimon/solid-grinder#how-it-works)
 
 > **Note**💡
