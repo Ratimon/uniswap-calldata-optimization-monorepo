@@ -37,9 +37,31 @@ pnpm i
 
 ## Quickstart
 
+1. Copy `.env` into `.env.<network>.local` and modidy as required. For example, this is a file `.env.optimism.local`[(https://github.com/Ratimon/uniswap-calldata-optimization-monorepo/.env.optimism.local] for optimism network:
+
+
+```sh
+# -------------------------------------------------------------------------------------------------
+# IMPORTANT!
+# -------------------------------------------------------------------------------------------------
+# USE .env.local and .env.<context>.local to set secrets
+# .env and .env.<context> are used for default public env
+# We use vite.js style env setup : https://vitejs.dev/guide/env-and-mode.html#modes
+# -------------------------------------------------------------------------------------------------
+
+ETHERSCAN_KEY=
+RPC_URL_optimism=
+
+MNEMONIC=
+DEPLOYER=
+DEPLOYER_PRIVATE_KEY=
+DEPLOYMENT_CONTEXT=optimism
+ENV_MODE=DEPLOYMENT_CONTEXT
+```
+
 There are two main components, which are **blockchain component** and **web component**
 
-1. Spinning up the **blockchain component**:
+2. Spinning up the **blockchain component**:
 
 ```sh
 cd contracts
@@ -59,21 +81,21 @@ pnpm prepare
 
 This will open a customized terminal with three sub-terminals, including anvil, testing and interaction.
 
-2. In another terminal, run deployment scripts to the local network:
+3. In another terminal, run deployment scripts to the local network:
 
 ```sh
 pnpm contracts:deploy_local_all
 ```
 This will atomically deploy sets of deployment scripts.
 
-3. Export deployment artifacts with formated schema to be used later in front-end part:
+4. Export deployment artifacts with formated schema to be used later in front-end part:
 
 ```sh
 pnpm contracts:export_local
 ```
 This schema includes **address** and **abi**.
 
-4. Running the **front-end component**:
+5. Running the **front-end component**:
 
 ```sh
 pnpm web:svelte:dev
