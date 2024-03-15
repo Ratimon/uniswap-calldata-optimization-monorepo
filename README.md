@@ -37,8 +37,11 @@ pnpm i
 
 ## Quickstart
 
-1. Copy `.env` into `.env.<network>.local` and modidy as required. For example, this is a file `.env.optimism.local`[(https://github.com/Ratimon/uniswap-calldata-optimization-monorepo/.env.optimism.local] for optimism network:
+1. Copy `.env` into `.env.<network>.local` and modidy as required. For example, this is a file (`.env.optimism.local`)(https://github.com/Ratimon/uniswap-calldata-optimization-monorepo/.env.optimism.local) for optimism network:
 
+> **Note**💡
+
+More style and convention guide for environment variable management can be found here : [ldenv](https://github.com/wighawag/ldenv)
 
 ```sh
 # -------------------------------------------------------------------------------------------------
